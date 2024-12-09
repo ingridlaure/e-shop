@@ -8,7 +8,7 @@ public class Cart {
 	private int id;
     private User userr;
     private Boolean actif;
-    List<CartItem> items;
+    List<CartItem> cartItems;
     public Cart() {
 		
 	}
@@ -17,14 +17,14 @@ public class Cart {
 		this.id = id;
 		this.userr = userr;
 		this.actif = actif;
-		this.items = items;
+		this.cartItems = items;
 	}
 	
 	public Cart(User userr, Boolean actif, List<CartItem> items) {
 		
 		this.userr = userr;
 		this.actif = actif;
-		this.items = items;
+		this.cartItems = items;
 	}
 	public int getId() {
 		return id;
@@ -45,10 +45,10 @@ public class Cart {
 		this.actif = actif;
 	}
 	public List<CartItem> getItems() {
-		return items;
+		return cartItems;
 	}
 	public void setItems(List<CartItem> items) {
-		this.items = items;
+		this.cartItems = items;
 	}
 
 

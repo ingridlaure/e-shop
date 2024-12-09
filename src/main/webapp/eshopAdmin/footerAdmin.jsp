@@ -9,7 +9,7 @@
 <body>
 <!-- Footer -->
     <footer class="bg-dark text-light text-center py-3">
-        &copy; 2024 Mon Site E-commerce. Tous droits réservés.
+        &copy; 2024 e-shop. Tous droits réservés.
     </footer>
 
     <!-- Bootstrap JS -->

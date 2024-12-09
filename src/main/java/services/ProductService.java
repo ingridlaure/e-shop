@@ -1,4 +1,4 @@
-package controller;
+package services;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import jakarta.ws.rs.core.Response;
 import metier.Product;
 
 @Path("/products")
-public class ProductController {
+public class ProductService {
 	
 	private static ProductDAO productDAO=new ProductDAO();
 	

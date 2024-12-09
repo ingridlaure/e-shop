@@ -13,6 +13,7 @@ public class Order {
     private Date dateCommande;
     private String statut; 
     private List<OrderItem> orderItems;
+    
 	public Order(int id, User utilisateur, Double total, Date dateCommande, String statut, List<OrderItem> orderItems) {
 		
 		this.id = id;

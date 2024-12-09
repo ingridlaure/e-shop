@@ -45,7 +45,7 @@ public class ProductDAO {
 	}
 	
 	public Boolean addProduct(Product product) {
-		String query="insert into ESHOP_PRODUIT (nom,description,prix,stock) VALUES(?,?,?,?,?)";
+		String query="insert into ESHOP_PRODUIT (nom,description,prix,stock,image) VALUES(?,?,?,?,?)";
 		try(PreparedStatement pstm1=dbConnect.prepareStatement(query)){
 			pstm1.setString(1, product.getNom());
 			pstm1.setString(2,product.getDescription());

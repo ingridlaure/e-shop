@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <footer class="footer bg-light text-center">
     <div class="container py-3">
-        <span class="text-muted">&copy; 2024 eCommerce. Tous droits réservés.</span>
+        <span class="text-muted">&copy; 2024 e-shop. Tous droits réservés.</span>
     </div>
 </footer>
 

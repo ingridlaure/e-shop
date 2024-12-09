@@ -13,7 +13,7 @@
         <h1 class="text-center mb-4">Ajouter un Nouveau Produit</h1>
 
         <!-- Formulaire d'ajout de produit -->
-        <form action="AddProductServlet" method="post" enctype="multipart/form-data" class="p-4 border rounded shadow-sm">
+        <form action="<%= request.getContextPath() %>/AddProductServlet" method="post" enctype="multipart/form-data" class="p-4 border rounded shadow-sm">
             <div class="mb-3">
                 <label for="productName" class="form-label">Nom du Produit</label>
                 <input type="text" class="form-control" id="productName" name="name" placeholder="Nom du produit" required>
@@ -30,7 +30,7 @@
                     <input type="number" step="0.01" class="form-control" id="productPrice" name="price" placeholder="Prix du produit" required>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="productStock" class="form-label">Stock</label>
+                    <label for="productStock" class="form-label">Qauntité en Stock</label>
                     <input type="number" class="form-control" id="productStock" name="stock" placeholder="Quantité en stock" required>
                 </div>
             </div>
@@ -41,7 +41,7 @@
 
             <div class="text-center">
                 <button type="submit" class="btn btn-success">Ajouter le Produit</button>
-                <a href="gestion-produits.jsp" class="btn btn-secondary">Annuler</a>
+                <a href="" class="btn btn-secondary">Annuler</a>
             </div>
         </form>
     </div>
