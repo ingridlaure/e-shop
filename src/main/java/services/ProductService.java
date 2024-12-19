@@ -17,49 +17,48 @@ import metier.Product;
 
 @Path("/products")
 public class ProductService {
-	
-	private static ProductDAO productDAO=new ProductDAO();
-	
+
+	private static ProductDAO productDAO = new ProductDAO();
+
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Product> getProducts(){
+	@Produces(MediaType.APPLICATION_JSON + ";charset=UTF-8")
+	public List<Product> getProducts() {
 		return productDAO.getProducts();
 	}
-	
+
 	@POST
 	@Path("/create")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response addProduct(Product product) {
 		productDAO.addProduct(product);
 		return Response.status(Response.Status.CREATED).build();
-		}
-	
+	}
+
 	@GET
 	@Path("/{index}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getProduct(@PathParam("index") int index) {
-		Product product=productDAO.getProduct(index);
-		if(product!=null) {
+		Product product = productDAO.getProduct(index);
+		if (product != null) {
 			return Response.ok(product).build();
-		}else {
+		} else {
 			return Response.status(Response.Status.NOT_FOUND).build();
 		}
 	}
-	
+
 	@PUT
 	@Path("/{index}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response updateProduct(@PathParam("index") int index,Product product) {
+	public Response updateProduct(@PathParam("index") int index, Product product) {
 		productDAO.updateProduct(index, product);
 		return Response.noContent().build();
 	}
-	
+
 	@DELETE
 	@Path("/{index}")
 	public Response deleteProduct(@PathParam("index") int index) {
 		productDAO.deleteProduct(index);
 		return Response.noContent().build();
 	}
-	
 
 }

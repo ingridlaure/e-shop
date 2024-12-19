@@ -25,7 +25,7 @@
 			<artifactId>jakarta.jakartaee-web-api</artifactId>
 			<version>10.0.0</version>
 			<scope>provided</scope>
-		</dependency>
+		</dependency> 
 		<!-- Jersey Dependencies -->
 		<dependency>
 			<groupId>org.glassfish.jersey.core</groupId>
@@ -92,6 +92,11 @@
     <groupId>commons-fileupload</groupId>
     <artifactId>commons-fileupload</artifactId>
     <version>1.4</version>
+</dependency>
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-crypto</artifactId>
+    <version>5.8.0</version>
 </dependency>
         
 	</dependencies>

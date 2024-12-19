@@ -1,20 +1,17 @@
 package eshopServlet;
 
-import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-
 import java.io.IOException;
 
 import org.json.JSONArray;
 
-@WebServlet("/GetProductsServlet")
-public class GetProductsServlet extends HttpServlet {
+@WebServlet("/GetProductPublicServlet")
+public class GetProductPublicServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -33,7 +30,7 @@ public class GetProductsServlet extends HttpServlet {
 			getServletContext().setAttribute("products", jsonArray);
 
 			// forward à la jsp
-			request.getRequestDispatcher("/eshop/productManager.jsp").forward(request, response);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 		} catch (Exception e) {
 			response.getWriter().write("Erreur : " + e.getMessage());
 		}

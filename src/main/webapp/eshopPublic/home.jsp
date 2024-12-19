@@ -20,39 +20,33 @@
 <!-- Liste des produits -->
 <div class="container">
     <div class="row">
+    <%
+			//recuperer les données de ma requete
+			org.json.JSONArray products =(org.json.JSONArray) request.getAttribute("products");
+			if(products==null){
+				out.println("<li>Aucun Produit trouvé</li>");
+			}else{
+				for(int i=0;i<products.length();i++){
+					//Recuperer le personnage 
+					org.json.JSONObject product =products.getJSONObject(i);
+					//out.println("<li><a href=DetailProduitServlet?idProduit="+product.getInt("id")+">"+film.getString("titre")+"</a></li>");
+					%>
         <!-- Produit 1 -->
         <div class="col-md-4">
             <div class="card mb-4">
-                <img src="images/product1.jpg" class="card-img-top" alt="Produit 1">
+                <img src="<%= product.getString("image") %>" class="card-img-top" alt="Produit 1">
                 <div class="card-body">
-                    <h5 class="card-title">Produit 1</h5>
-                    <p class="card-text">Description du produit 1.</p>
+                    <h5 class="card-title"><%= product.getString("nom") %></h5>
+                    <p class="card-text"><%= product.getDouble("prix") %></p>
                     <a href="#" class="btn btn-success">Ajouter au Panier</a>
                 </div>
             </div>
         </div>
-        <!-- Produit 2 -->
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <img src="images/product2.jpg" class="card-img-top" alt="Produit 2">
-                <div class="card-body">
-                    <h5 class="card-title">Produit 2</h5>
-                    <p class="card-text">Description du produit 2.</p>
-                    <a href="#" class="btn btn-success">Ajouter au Panier</a>
-                </div>
-            </div>
-        </div>
-        <!-- Produit 3 -->
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <img src="images/product3.jpg" class="card-img-top" alt="Produit 3">
-                <div class="card-body">
-                    <h5 class="card-title">Produit 3</h5>
-                    <p class="card-text">Description du produit 3.</p>
-                    <a href="#" class="btn btn-success">Ajouter au Panier</a>
-                </div>
-            </div>
-        </div>
+               			<%
+				}
+			}
+			%>
+       
     </div>
 </div>
 <jsp:include page="footer.jsp" ></jsp:include>

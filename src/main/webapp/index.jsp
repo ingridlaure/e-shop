@@ -8,52 +8,96 @@
 </head>
 <jsp:include page="eshopPublic/header.jsp"></jsp:include>
 <!-- Bannière d'accueil -->
-<div class="jumbotron jumbotron-fluid text-center">
+<div class="jumbotron jumbotron-fluid text-center bg-light">
     <div class="container">
-        <h1 class="display-4">Bienvenue sur eCommerce!</h1>
-        <p class="lead">Découvrez nos derniers produits et offres exclusives.</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Voir les Produits</a>
+        <h1 class="display-4">Bienvenue sur notre Boutique en ligne</h1>
+        <p class="lead">Découvrez nos derniers models en tissu pagne.</p>
+        
     </div>
 </div>
 
 <!-- Liste des produits -->
 <div class="container">
-    <div class="row">
-        <!-- Produit 1 -->
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <img src="images/product1.jpg" class="card-img-top" alt="Produit 1">
-                <div class="card-body">
-                    <h5 class="card-title">Produit 1</h5>
-                    <p class="card-text">Description du produit 1.</p>
-                    <a href="#" class="btn btn-success">Ajouter au Panier</a>
+
+   
+        <div class="row g-3">
+    <%
+			//recuperer les données de ma requete
+			org.json.JSONArray products =(org.json.JSONArray) getServletContext().getAttribute("products");
+    System.out.println("valeur du contexte :"+getServletContext().getAttribute("products"));
+			if(products==null){
+				out.println("<li>Aucun Produit trouvé</li>");
+			}else{
+				for(int i=0;i<4;i++){
+					//Recuperer le personnage 
+					org.json.JSONObject product =products.getJSONObject(i);
+					//out.println("<li><a href=DetailProduitServlet?idProduit="+product.getInt("id")+">"+film.getString("titre")+"</a></li>");
+					%>
+       
+         <div class="col-3 d-flex align-items-stretch"> <!-- 3 colonnes sur écrans moyens+ -->
+            <div class="card w-200">
+              
+                <img src="images/<%=product.getString("image")%>" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" alt="<%= product.getString("nom") %>">
+
+                <div class="card-body text-center d-flex flex-column justify-content-between">
+                   
+                    <h6 class="card-title text-truncate" ><%= product.getString("nom") %></h6>
+
+                  
+                    <p class="card-text" style="font-size: 1.2rem; color: #28a745;"><%= product.getDouble("prix") %> €</p>
+
+                  
+                   
+                    <a href="#" class="btn btn-outline-success btn-sm">Voir Détails</a>
+                        <button class="btn btn-success btn-sm mt-2"><i class="bi bi-plus"></i><i class="bi bi-cart"></i></button>
                 </div>
             </div>
         </div>
-        <!-- Produit 2 -->
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <img src="images/product2.jpg" class="card-img-top" alt="Produit 2">
-                <div class="card-body">
-                    <h5 class="card-title">Produit 2</h5>
-                    <p class="card-text">Description du produit 2.</p>
-                    <a href="#" class="btn btn-success">Ajouter au Panier</a>
-                </div>
+               			<%
+				}
+			}
+			%>
+       </div>
+  
+</div>
+<div class="bg-light py-5">
+    <div class="container">
+        <h4 class="text-center">Ce que disent nos clients</h4>
+        <div class="row">
+            <div class="col-md-4">
+                <blockquote class="blockquote">
+                    <p>“Un excellent service, les produits sont de grande qualité !”</p>
+                    <footer class="blockquote-footer">Marie, Mons</footer>
+                </blockquote>
             </div>
-        </div>
-        <!-- Produit 3 -->
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <img src="images/product3.jpg" class="card-img-top" alt="Produit 3">
-                <div class="card-body">
-                    <h5 class="card-title">Produit 3</h5>
-                    <p class="card-text">Description du produit 3.</p>
-                    <a href="#" class="btn btn-success">Ajouter au Panier</a>
-                </div>
+            <div class="col-md-4">
+                <blockquote class="blockquote">
+                    <p>“Livraison rapide et support client réactif. Très satisfait !”</p>
+                    <footer class="blockquote-footer">Ahmed, Brussel</footer>
+                </blockquote>
+            </div>
+            <div class="col-md-4">
+                <blockquote class="blockquote">
+                    <p>“Je recommande à 100%, merci pour les réductions !”</p>
+                    <footer class="blockquote-footer">Sophia, Tournai</footer>
+                </blockquote>
             </div>
         </div>
     </div>
 </div>
+ <div class="py-4">
+    <div class="container text-center">
+        <p>Besoin d'aide ? Contactez-nous :</p>
+        <p>Email : support@ecshop.com | Téléphone : +32 1 23 45 67 89</p>
+        <div class="d-flex justify-content-center">
+            <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+        </div>
+    </div>
+</div>
+
+
 <jsp:include page="eshopPublic/footer.jsp" ></jsp:include>
 
 </html>

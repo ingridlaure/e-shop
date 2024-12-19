@@ -14,34 +14,50 @@
 
         <!-- Bouton pour ajouter un produit -->
         <div class="d-flex justify-content-end mb-3">
-           <a class="btn btn-primary" href="addProduct.jsp" role="button">Ajouter un produit</a>
+           <a class="btn btn-success" href="<%= request.getContextPath() %>/eshopAdmin/addProduct.jsp" role="button"><i class="bi bi-plus"></i>Ajouter un produit</a>
         </div>
 
         <!-- Table des produits -->
         <table class="table table-bordered table-striped">
             <thead class="table-dark">
                 <tr>
-                    <th>ID</th>
+             
                     <th>Nom</th>
+                    <th>Description</th>
                     <th>Prix</th>
                     <th>Stock</th>
-                    <th>Catégorie</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Exemple de produit -->
+            <%
+			//recuperer les données de ma requete
+			org.json.JSONArray products =(org.json.JSONArray) getServletContext().getAttribute("products");
+			if(products==null){
+				out.println("<li>Aucun Produit trouvé</li>");
+			}else{
+				for(int i=0;i<products.length();i++){
+					//Recuperer le personnage 
+					org.json.JSONObject product =products.getJSONObject(i);
+					//out.println("<li><a href=DetailProduitServlet?idProduit="+product.getInt("id")+">"+film.getString("titre")+"</a></li>");
+					%>
+               
                 <tr>
-                    <td>1</td>
-                    <td>Produit Exemple</td>
-                    <td>49,99 €</td>
-                    <td>20</td>
-                    <td>Électronique</td>
+                    <td><%= product.getString("nom") %></td>
+                    <td><%= product.getString("description") %></td>
+                    <td><%= product.getDouble("prix") %></td>
+                    <td><%= product.getInt("stock") %></td>
                     <td>
-                        <a class="btn btn-success" href="updateProduct.jsp" role="button">Modifier</a>
-                        <button class="btn btn-danger btn-sm">Supprimer</button>
+                        <!-- <a class="btn btn-success" href="updateProduct.jsp" role="button"><i class="bi bi-pencil"></i></a> -->
+
+                         <button class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></button>
+                         <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
                     </td>
                 </tr>
+                			<%
+				}
+			}
+			%>
                 <!-- Produits dynamiques ici -->
             </tbody>
         </table>

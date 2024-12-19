@@ -4,7 +4,7 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>GetProductPublicServlet</welcome-file>
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
@@ -26,6 +26,8 @@
         <servlet-name>JAKARTAA-RS Servlet</servlet-name>
         <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
+  
+  
     <resource-ref>
     <description>Oracle DataSource</description>
     <res-ref-name>jdbc/OracleDS</res-ref-name>

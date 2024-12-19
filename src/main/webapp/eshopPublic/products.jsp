@@ -14,58 +14,54 @@
         
         <!-- Grille des produits -->
         <div class="row">
-            <!-- Produit 1 -->
-            <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                    <img src="https://via.placeholder.com/200" class="card-img-top" alt="Produit 1">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Produit 1</h5>
-                        <p class="card-text text-danger">49,99 €</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Voir Détails</a>
-                        <button class="btn btn-primary btn-sm mt-2">Ajouter au Panier</button>
-                    </div>
-                </div>
-            </div>
+        <%
+			//recuperer les données de ma requete
+			org.json.JSONArray products =(org.json.JSONArray) getServletContext().getAttribute("products");
+    System.out.println("valeur du contexte :"+getServletContext().getAttribute("products"));
+			if(products==null){
+				out.println("<li>Aucun Produit trouvé</li>");
+			}else{
+				for(int i=0;i<products.length();i++){
+					//Recuperer le personnage 
+					org.json.JSONObject product =products.getJSONObject(i);
+					//out.println("<li><a href=DetailProduitServlet?idProduit="+product.getInt("id")+">"+film.getString("titre")+"</a></li>");
+					%>
+            <div class="col-3 d-flex align-items-stretch"> <!-- 3 colonnes sur écrans moyens+ -->
+            <div class="card w-200">
+              
+                <img src="../images/<%=product.getString("image")%>" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" alt="<%= product.getString("nom") %>">
 
-            <!-- Produit 2 -->
-            <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                    <img src="https://via.placeholder.com/200" class="card-img-top" alt="Produit 2">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Produit 2</h5>
-                        <p class="card-text text-danger">59,99 €</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Voir Détails</a>
-                        <button class="btn btn-primary btn-sm mt-2">Ajouter au Panier</button>
-                    </div>
-                </div>
-            </div>
+                <div class="card-body text-center d-flex flex-column justify-content-between">
+                   
+                    <h6 class="card-title text-truncate" ><%= product.getString("nom") %></h6>
 
-            <!-- Produit 3 -->
-            <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                    <img src="https://via.placeholder.com/200" class="card-img-top" alt="Produit 3">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Produit 3</h5>
-                        <p class="card-text text-danger">39,99 €</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Voir Détails</a>
-                        <button class="btn btn-primary btn-sm mt-2">Ajouter au Panier</button>
-                    </div>
-                </div>
-            </div>
+                  
+                    <p class="card-text" style="font-size: 1.2rem; color: #28a745;"><%= product.getDouble("prix") %> €</p>
 
-            <!-- Produit 4 -->
-            <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                    <img src="https://via.placeholder.com/200" class="card-img-top" alt="Produit 4">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Produit 4</h5>
-                        <p class="card-text text-danger">89,99 €</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Voir Détails</a>
-                        <button class="btn btn-primary btn-sm mt-2">Ajouter au Panier</button>
-                    </div>
+                  
+                   
+                    <a href="#" class="btn btn-outline-success btn-sm">Voir Détails</a>
+                    <!-- Formulaire d'ajout au panier -->
+		            <form action="<%= request.getContextPath() %>/AddToCartServlet" method="post" class="mt-2">
+		                <input type="hidden" name="productId" value="<%= product.getInt("id") %>">
+		                <input type="hidden" name="productName" value="<%= product.getString("nom") %>">
+		                <input type="hidden" name="productPrice" value="<%= product.getDouble("prix") %>">
+		                <input type="hidden" name="productImage" value="<%= product.getString("image") %>">
+		                <div class="input-group">
+		                    <input type="number" name="productQuantity" value="1" min="1" class="form-control" style="max-width: 70px;">
+		                    <button type="submit" class="btn btn-success btn-sm"><i class="bi bi-cart"></i> Ajouter</button>
+		                </div>
+		            </form>
+                        <button class="btn btn-success btn-sm mt-2"><i class="bi bi-plus"></i><i class="bi bi-cart"></i>Ajouter au Panier</button>
                 </div>
             </div>
-        </div>
+            </div> 
+                 			<%
+				}
+			}
+			%>
+
+</div>
 </div>
 <jsp:include page="footer.jsp" ></jsp:include>
 
