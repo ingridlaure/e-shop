@@ -21,13 +21,16 @@ public class CartItem {
 	
 
 	public CartItem(Cart panier, Product produit, Integer quantite,Double price) {
-
 		this.panier = panier;
 		this.produit = produit;
 		this.quantite = quantite;
 		this.price=price;
 	}
-
+	public CartItem( Product produit, Integer quantite,Double price) {
+		this.produit = produit;
+		this.quantite = quantite;
+		this.price=price;
+	}
 	public CartItem() {
 
 	}

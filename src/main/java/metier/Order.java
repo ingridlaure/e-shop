@@ -13,9 +13,9 @@ public class Order {
 	private Double total;
 	private Date dateCommande;
 	private String statut;
-	private List<OrderItem> orderItems;
+	private List<CartItem> orderItems;
 
-	public Order(int id, User utilisateur, Double total, Date dateCommande, String statut, List<OrderItem> orderItems) {
+	public Order(int id, User utilisateur, Double total, Date dateCommande, String statut, List<CartItem> orderItems) {
 
 		this.id = id;
 		this.utilisateur = utilisateur;
@@ -25,13 +25,12 @@ public class Order {
 		this.orderItems = orderItems;
 	}
 
-	public Order(User utilisateur, Double total, Date dateCommande, String statut, List<OrderItem> orderItems) {
+	public Order(User utilisateur, Double total, List<CartItem> orderItems) {
 
 		this.utilisateur = utilisateur;
 		this.total = total;
-		this.dateCommande = dateCommande;
-		this.statut = statut;
 		this.orderItems = orderItems;
+		this.statut="EN_ATTENTE";
 	}
 
 	public Order() {
@@ -78,11 +77,11 @@ public class Order {
 		this.statut = statut;
 	}
 
-	public List<OrderItem> getOrderItems() {
+	public List<CartItem> getOrderItems() {
 		return orderItems;
 	}
 
-	public void setOrderItems(List<OrderItem> orderItems) {
+	public void setOrderItems(List<CartItem> orderItems) {
 		this.orderItems = orderItems;
 	}
 

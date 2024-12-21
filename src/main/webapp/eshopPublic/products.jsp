@@ -22,11 +22,11 @@
 				out.println("<li>Aucun Produit trouvé</li>");
 			}else{
 				for(int i=0;i<products.length();i++){
-					//Recuperer le personnage 
+				
 					org.json.JSONObject product =products.getJSONObject(i);
-					//out.println("<li><a href=DetailProduitServlet?idProduit="+product.getInt("id")+">"+film.getString("titre")+"</a></li>");
+					
 					%>
-            <div class="col-3 d-flex align-items-stretch"> <!-- 3 colonnes sur écrans moyens+ -->
+            <div class="col-3 d-flex align-items-stretch"> 
             <div class="card w-200">
               
                 <img src="../images/<%=product.getString("image")%>" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" alt="<%= product.getString("nom") %>">
@@ -41,6 +41,7 @@
                   
                    
                     <a href="#" class="btn btn-outline-success btn-sm">Voir Détails</a>
+                    
                     <!-- Formulaire d'ajout au panier -->
 		            <form action="<%= request.getContextPath() %>/AddToCartServlet" method="post" class="mt-2">
 		                <input type="hidden" name="productId" value="<%= product.getInt("id") %>">
@@ -49,10 +50,12 @@
 		                <input type="hidden" name="productImage" value="<%= product.getString("image") %>">
 		                <div class="input-group">
 		                    <input type="number" name="productQuantity" value="1" min="1" class="form-control" style="max-width: 70px;">
-		                    <button type="submit" class="btn btn-success btn-sm"><i class="bi bi-cart"></i> Ajouter</button>
+		                    
+		                    <button type="submit" class="btn btn-success btn-sm"><i class="bi bi-plus"></i><i class="bi bi-cart"></i> Ajouter</button>
+		                    
+		                    
 		                </div>
 		            </form>
-                        <button class="btn btn-success btn-sm mt-2"><i class="bi bi-plus"></i><i class="bi bi-cart"></i>Ajouter au Panier</button>
                 </div>
             </div>
             </div> 

@@ -1,5 +1,6 @@
 package metier;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -9,7 +10,16 @@ public class Cart {
 	private int id;
 	private User userr;
 	private Boolean actif;
-	List<CartItem> cartItems;
+	List<CartItem> cartItems=new ArrayList<>();
+	private double total;
+
+	public double getTotal() {
+		return total;
+	}
+
+	public void setTotal(double total) {
+		this.total = total;
+	}
 
 	public Cart() {
 
@@ -28,6 +38,10 @@ public class Cart {
 		this.userr = userr;
 		this.actif = actif;
 		this.cartItems = items;
+	}
+	public Cart(int id, User user) {
+		this.id=id;
+		this.userr=user;
 	}
 
 	public int getId() {
@@ -64,12 +78,16 @@ public class Cart {
 	
 	public void addItem(CartItem item) {
 		for(CartItem cartItem : cartItems) {
-			if(cartItem.getProduit() ==item.getProduit()) {
+			if(cartItem.getProduit().getId() == item.getProduit().getId()) {
 				cartItem.setQuantite(cartItem.getQuantite()+item.getQuantite());
 				return;
 			}
 		}
 		cartItems.add(item);
+	}
+	
+	public void removeItem(int productId) {
+	    cartItems.removeIf(item -> item.getProduit().getId() == productId);
 	}
 	
 	public double getTotalPrice() {

@@ -1,7 +1,5 @@
 package metier;
 
-import java.util.Date;
-
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -17,6 +15,9 @@ public class User {
 	public User() {
 
 	}
+	public User(int id) {
+		this.id=id;
+		}
 
 	public User(int id, String email, String password, String role, String nom, String prenom, String addresse) {
 		this.id = id;

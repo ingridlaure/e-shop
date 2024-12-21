@@ -13,13 +13,23 @@
             <h3 class="text-center mb-4">Connexion</h3>
            <%
                             String loginError = (String) request.getAttribute("errorMessage");
+           					String checkError = (String) request.getAttribute("errorMessageCheck");
+           
                             if (loginError != null) {
                         %>
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <%= loginError %>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                               
                             </div>
                         <%
+                            }
+                            if(checkError!=null){
+                            %>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <%= checkError %>
+                               
+                            </div>
+                            <% 
                             }
                         %>
             <!-- Formulaire de connexion -->

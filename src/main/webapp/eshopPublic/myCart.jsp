@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="metier.Cart" %>
+<%@ page import="metier.CartItem" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,52 +15,75 @@
         <h1 class="text-center">Mon Panier</h1>
         <div class="table-responsive">
             <table class="table table-bordered text-center">
-                <thead class="table-dark">
+                <thead class="thead-light">
                     <tr>
                         <th>Produit</th>
                         <th>Quantité</th>
                         <th>Prix Unitaire</th>
-                        <th>Total</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Exemple d'article -->
+                <%
+                Cart cart= (Cart) session.getAttribute("cart");
+                if(cart!=null && !cart.getItems().isEmpty()){
+                	
+                	for(CartItem item:cart.getItems()){
+                		
+                %>
+                
                     <tr>
-                        <td>Produit 1</td>
                         <td>
-                            <input type="number" value="1" class="form-control text-center" min="1">
+                        <img src="../images/<%= item.getProduit().getImage() %>" class="card-img-top img-fluid"  style="height: 100px; width: auto; object-fit: contain;"  alt="<%= item.getProduit().getNom() %>"></br>
+                        
+                        <%=item.getProduit().getNom() %>
                         </td>
-                        <td>15.00€</td>
-                        <td>15.00€</td>
                         <td>
-                            <button class="btn btn-danger btn-sm">Supprimer</button>
+                            <%=item.getQuantite() %>
+                        </td>
+                        <td><%= item.getPrice()%> € </td>
+                    
+                        <td>
+                            <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>Produit 2</td>
-                        <td>
-                            <input type="number" value="2" class="form-control text-center" min="1">
-                        </td>
-                        <td>25.00€</td>
-                        <td>50.00€</td>
-                        <td>
-                            <button class="btn btn-danger btn-sm">Supprimer</button>
-                        </td>
-                    </tr>
+                    <% 	}
+                	
+                } else{
+                	%>
+                	
+                	<tr>
+                	<td colspan="4" class="text-center">Votre panier est vide.</td>
+                	</tr>
+                	
+                	<%	
+                	}%>
+                    
                 </tbody>
                 <tfoot>
+                <% 
+                  if (cart != null && !cart.getItems().isEmpty()) {
+                %>
                     <tr class="table-light">
                         <td colspan="3" class="text-end fw-bold">Total :</td>
-                        <td colspan="2" class="text-start">65.00€</td>
+                        <td colspan="2" class="text-start"><%=cart.getTotalPrice() %></td>
                     </tr>
+                    <%
+                }
+                %>
                 </tfoot>
             </table>
         </div>
         <!-- Boutons -->
         <div class="d-flex justify-content-between">
-            <a href="#" class="btn btn-secondary">Continuer vos achats</a>
-            <a href="#" class="btn btn-success">Passer la commande</a>
+            <a href="<%= request.getContextPath() %>/eshopPublic/products.jsp" class="btn btn-secondary">Continuer vos achats</a>
+             <% 
+                  if (cart != null && !cart.getItems().isEmpty()) {
+                %>
+            <a href="<%= request.getContextPath() %>/eshopPublic/recapOrder.jsp" class="btn btn-success">Passer la commande</a>
+                 <%
+                }
+                %>
         </div>
     </div>
 		
