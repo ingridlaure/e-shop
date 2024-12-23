@@ -16,7 +16,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Panneau d'administration</a>
+            <a class="navbar-brand" href="#">e-shop administration</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -27,8 +27,6 @@
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="<%= request.getContextPath() %>/eshopAdmin/productsManager.jsp">Gestion des Produit</a>
-                        <!-- <a class="nav-link" href="/eshopAdmin/productsManager.jsp">Gestion des Produits</a> -->
-                        <!-- <a class="nav-link" href="<%= request.getContextPath() %>/GetProductsServlet">Gestion des Produits</a> -->
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<%= request.getContextPath() %>/eshopAdmin/ordersManager.jsp">Gestion des Commandes</a>

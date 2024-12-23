@@ -44,12 +44,17 @@
                         <td><%= item.getPrice()%> € </td>
                     
                         <td>
-                            <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
+	                        <form action="<%= request.getContextPath() %>/RemoveFromCart" method="post">
+	                        <input type="hidden" name="itemId" value="<%= item.getProduit().getId() %>"/>
+	                        	<button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
+	                        </form>
+                            
                         </td>
                     </tr>
                     <% 	}
                 	
-                } else{
+                } else
+                {
                 	%>
                 	
                 	<tr>

@@ -25,6 +25,8 @@
 				
 					org.json.JSONObject product =products.getJSONObject(i);
 					
+					if (product.getInt("stock")>0){
+					
 					%>
             <div class="col-3 d-flex align-items-stretch"> 
             <div class="card w-200">
@@ -60,6 +62,7 @@
             </div>
             </div> 
                  			<%
+					}
 				}
 			}
 			%>

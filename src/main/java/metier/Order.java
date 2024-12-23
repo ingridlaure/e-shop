@@ -1,5 +1,6 @@
 package metier;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,25 +14,34 @@ public class Order {
 	private Double total;
 	private Date dateCommande;
 	private String statut;
-	private List<CartItem> orderItems;
+	private String deliveryAddress;
+	private List<CartItem> orderItems=new ArrayList<>();
 
-	public Order(int id, User utilisateur, Double total, Date dateCommande, String statut, List<CartItem> orderItems) {
-
+	public Order(int id, User utilisateur, Double total, Date dateCommande, String statut,String deliveryAdress) {
 		this.id = id;
 		this.utilisateur = utilisateur;
 		this.total = total;
 		this.dateCommande = dateCommande;
 		this.statut = statut;
-		this.orderItems = orderItems;
+		this.deliveryAddress=deliveryAdress;
 	}
 
-	public Order(User utilisateur, Double total, List<CartItem> orderItems) {
+	public Order(int id, Double total, Date dateCommande, String statut,String deliveryAdress) {
+		this.id = id;
+		this.total = total;
+		this.dateCommande = dateCommande;
+		this.statut = statut;
+		this.deliveryAddress=deliveryAdress;
+	}
 
+	public Order(User utilisateur, Double total, List<CartItem> orderItems,String deliveryAdress) {
 		this.utilisateur = utilisateur;
 		this.total = total;
 		this.orderItems = orderItems;
 		this.statut="EN_ATTENTE";
+		this.deliveryAddress=deliveryAdress;
 	}
+	
 
 	public Order() {
 
@@ -84,5 +94,19 @@ public class Order {
 	public void setOrderItems(List<CartItem> orderItems) {
 		this.orderItems = orderItems;
 	}
+
+	public String getDeliveryAddress() {
+		return deliveryAddress;
+	}
+
+	public void setDeliveryAddress(String deliveryAddress) {
+		this.deliveryAddress = deliveryAddress;
+	}
+	public void addItem(CartItem item) {
+		
+		orderItems.add(item);
+	}
+	
+	
 
 }

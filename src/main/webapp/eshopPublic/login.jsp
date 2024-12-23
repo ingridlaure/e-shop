@@ -22,14 +22,7 @@
                                
                             </div>
                         <%
-                            }
-                            if(checkError!=null){
-                            %>
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <%= checkError %>
-                               
-                            </div>
-                            <% 
+                        session.removeAttribute("errorMessage");
                             }
                         %>
             <!-- Formulaire de connexion -->

@@ -12,7 +12,7 @@
 <jsp:include page="header.jsp"></jsp:include>
 <div class="container mt-5">
         <h1 class="text-center">Confirmation de la commande</h1>
-        <form action="<%= request.getContextPath() %>/FinalizeOrderServlet" method="POST">
+        <form action="<%= request.getContextPath() %>/CheckOutServlet" method="POST">
             <h3 class="mt-4">Détails de la livraison</h3>
             <div class="mb-3">
                 <label for="deliveryAddress" class="form-label">Adresse de livraison</label>

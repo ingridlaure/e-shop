@@ -19,18 +19,27 @@ public class GetProductsServlet extends HttpServlet {
 		response.setContentType("application/json; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		try {
-			// Appel à l'API Film_URL => recevoir une reponse
+			// Appel à l'API  => recevoir une reponse
 			String jsonResponse = HttpClientHelper.fetch("http://localhost:8081/e-shop/api/products");
 			System.out.println(jsonResponse);
 			// Transformer le string avec objet Json
 			JSONArray jsonArray = new JSONArray(jsonResponse);
 			System.out.println(jsonArray);
 			// stocker les données dans la requete
-			request.setAttribute("products", jsonArray);
+			//request.setAttribute("products", jsonArray);
 			getServletContext().setAttribute("products", jsonArray);
 
 			// forward à la jsp
-			request.getRequestDispatcher("/eshop/productManager.jsp").forward(request, response);
+			//request.getRequestDispatcher("/eshop/productManager.jsp").forward(request, response);
+			
+			//récupérer les commandes 
+			 jsonResponse = HttpClientHelper.fetch("http://localhost:8081/e-shop/api/orders");
+			System.out.println(jsonResponse);
+			// Transformer le string avec objet Json
+			jsonArray = new JSONArray(jsonResponse);
+			System.out.println(jsonArray);
+			getServletContext().setAttribute("orders", jsonArray);
+			
 		} catch (Exception e) {
 			response.getWriter().write("Erreur : " + e.getMessage());
 		}

@@ -32,7 +32,7 @@
                 <a class="nav-link fw-bold" href="<%= request.getContextPath() %>/eshopPublic/myCart.jsp">Panier</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link fw-bold" href="<%= request.getContextPath() %>/eshopPublic/myOrders.jsp">commandes</a>
+                <a class="nav-link fw-bold" href="<%= request.getContextPath() %>/getOrdersByUserServlet">commandes</a>
             </li>
             <%
                     // Récupérer l'utilisateur depuis la session

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,21 +27,55 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Exemple de commande -->
+                <%
+			//recuperer les données de ma requete
+			org.json.JSONArray orders =(org.json.JSONArray) getServletContext().getAttribute("orders");
+                System.out.println("valeur des orders :"+getServletContext().getAttribute("orders"));
+			if(orders==null){
+				out.println("<li>Aucune commande trouvé</li>");
+			}else{
+				for(int i=0;i<orders.length();i++){
+					//Recuperer le personnage 
+					org.json.JSONObject order =orders.getJSONObject(i);
+					org.json.JSONObject user=order.getJSONObject("utilisateur");
+					long timestamp = order.getLong("dateCommande"); // Récupération du timestamp
+				 	Date dateCommande = new Date(timestamp);
+				    String formattedDate = new SimpleDateFormat("dd/MM/yyyy").format(dateCommande);
+				
+					%>
                 <tr>
-                    <td>101</td>
-                    <td>Jean Dupont</td>
-                    <td>2024-11-28</td>
-                    <td>120,50 €</td>
+                    <td>#<%= order.getInt("id")%></td>
+                    <td><%= user.getString("nom")%> <%= user.getString("prenom")%></td>
+                    <td><%= formattedDate  %></td>
+                    <td><%= order.getDouble("total")%> €</td>
                     <td>
-                        <span class="badge bg-warning">En cours</span>
+                        <span class="badge bg-warning"><%= order.getString("statut")%></span>
                     </td>
                     <td>
-                        <button class="btn btn-primary btn-sm">Détails</button>
-                        <button class="btn btn-success btn-sm">Marquer comme Livré</button>
+                        <a href="<%= request.getContextPath() %>/GetOrdersDetailServlet?idOrder=<%= order.getInt("id") %>"class="btn btn-primary btn-sm">Detail</a>
+				                        
+										<% if ("EN TRAITEMENT".equals(order.getString("statut"))) { %>
+				            <form action="LivraisonServlet" method="post">
+				                <input type="hidden" name="action" value="expedier">
+				                <input type="hidden" name="commandeId" value="<%= order.getInt("id") %>">
+				                <button type="submit" class="btn btn-warning btn-sm">Expédier</button>
+				            </form>
+				        <% } else if ("EXPEDIE".equals(order.getString("statut"))) { %>
+				            <form action="LivraisonServlet" method="post">
+				                <input type="hidden" name="action" value="livrer">
+				                <input type="hidden" name="commandeId" value="<%=order.getInt("id") %>">
+				                <button type="submit" class="btn btn-success btn-sm">Livrer</button>
+				            </form>
+				        <% } else if ("LIVREE".equals(order.getString("statut"))) { %>
+				            <span class="badge badge-success">Livrée</span>
+				        <% } %>
+
                     </td>
                 </tr>
-                <!-- Plus de commandes dynamiques ici -->
+                      			<%
+				}
+			}
+			%>
             </tbody>
         </table>
     </div>

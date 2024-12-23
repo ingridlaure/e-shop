@@ -29,13 +29,13 @@ public class CheckOutServlet extends HttpServlet {
 		Cart cart=(Cart) session.getAttribute("cart");
 		User user=(User) session.getAttribute("user");
 		
-		Order order=new Order(user,cart.getTotalPrice(),cart.getItems());
+		Order order=new Order(user,cart.getTotalPrice(),cart.getItems(),request.getParameter("deliveryAddress"));
 		
 		try {
 
 			JSONObject orderJson = new JSONObject(order);
 			HttpClientHelper.send("http://localhost:8081/e-shop/api/orders/create", orderJson.toString());
-			response.sendRedirect(request.getContextPath() + "/eshopPublic/myOrders.jsp");
+			response.sendRedirect(request.getContextPath() + "/eshopPublic/products.jsp");
 			session.removeAttribute("cart");
 
 		} catch (Exception e) {

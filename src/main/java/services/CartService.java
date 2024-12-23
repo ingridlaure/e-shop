@@ -19,7 +19,7 @@ public class CartService {
 	private static UserDao userDAO=new UserDao();
 
 	@GET
-	@Path("/{index}")
+	@Path("/user/{index}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getProduct(@PathParam("index") int index) {
 		User user = userDAO.getUser(index);

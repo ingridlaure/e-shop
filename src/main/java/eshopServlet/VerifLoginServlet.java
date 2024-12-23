@@ -14,6 +14,8 @@ import metier.User;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import org.json.JSONArray;
+
 import dao.CartDao;
 import dao.UserDao;
 
@@ -26,7 +28,6 @@ public class VerifLoginServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		UserDao userDAO = new UserDao();
-		CartDao cartDAO = new CartDao();
 		// Valider les informations utilisateur
 		User user = userDAO.verifUser(username, password);
 
@@ -34,7 +35,7 @@ public class VerifLoginServlet extends HttpServlet {
 			// Créer une session pour l'utilisateur
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
-			Cart tempCart = (Cart) session.getAttribute("cart");
+			/*Cart tempCart = (Cart) session.getAttribute("cart");
 			if (tempCart != null && !tempCart.getItems().isEmpty()) {
 				
                 // Fusionner le panier temporaire avec le panier en base de données
@@ -48,7 +49,7 @@ public class VerifLoginServlet extends HttpServlet {
 					e.printStackTrace();
 				}
             
-            }
+            }*/
 
 			// Rediriger en fonction du rôle
 			if ("ADMIN".equals(user.getRole())) {
@@ -57,13 +58,18 @@ public class VerifLoginServlet extends HttpServlet {
 
 				response.sendRedirect(request.getContextPath() + "/index.jsp");
 			}
-		} else {
+		
+		} 
+		
+		else {
 			// Rediriger vers la page de connexion avec un message d'erreur
 			request.setAttribute("errorMessage", "Identifiants invalides !");
 			System.out.println(request.getContextPath() + "/eshopPublic/login.jsp");
 			request.getRequestDispatcher("/eshopPublic/login.jsp").forward(request, response);
 
 		}
+		
+		
 		
 		
 	}
