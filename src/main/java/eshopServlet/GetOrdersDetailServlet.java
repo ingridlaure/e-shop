@@ -24,7 +24,7 @@ public class GetOrdersDetailServlet extends HttpServlet {
 		
 		try {
 			String jsonResponse=HttpClientHelper.fetch("http://localhost:8081/e-shop/api/orders/"+id);
-			System.out.println(jsonResponse);
+			System.out.println("Detail recupéré: "+jsonResponse);
 			JSONObject jsonObject=new JSONObject(jsonResponse);
 			request.setAttribute("orderDetails", jsonObject);
 			request.getRequestDispatcher("/eshopPublic/detailOrder.jsp").forward(request, response);

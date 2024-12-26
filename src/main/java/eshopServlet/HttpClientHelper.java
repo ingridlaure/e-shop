@@ -20,5 +20,17 @@ public class HttpClientHelper {
 		Response response = Request.Post(url).bodyString(body, ContentType.APPLICATION_JSON).execute();
 		return response.returnContent().asString();
 	}
+	
+	
+	public static String put(String url, String body) throws IOException {
+       
+		Response response = Request.Put(url).bodyString(body, ContentType.APPLICATION_JSON).execute();
+		if (response == null || response.returnContent() == null) {
+            return "Aucune réponse reçue, mais la requête semble avoir été réussie.";
+        }
+
+       
+        return response.returnContent().asString();
+    }
 
 }

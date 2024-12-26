@@ -49,9 +49,10 @@
                     <td><%= product.getInt("stock") %></td>
                     <td>
                         <!-- <a class="btn btn-success" href="updateProduct.jsp" role="button"><i class="bi bi-pencil"></i></a> -->
-
-                         <button class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></button>
-                         <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
+				<a href="<%= request.getContextPath() %>/EditProductServlet?id=<%= product.getInt("id") %>" class="btn btn-success btn-sm">
+			        <i class="bi bi-pencil"></i>
+			    </a>
+			    <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
                     </td>
                 </tr>
                 			<%

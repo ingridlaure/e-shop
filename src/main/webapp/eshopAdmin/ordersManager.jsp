@@ -54,14 +54,14 @@
                     <td>
                         <a href="<%= request.getContextPath() %>/GetOrdersDetailServlet?idOrder=<%= order.getInt("id") %>"class="btn btn-primary btn-sm">Detail</a>
 				                        
-										<% if ("EN TRAITEMENT".equals(order.getString("statut"))) { %>
-				            <form action="LivraisonServlet" method="post">
+						<% if ("EN TRAITEMENT".equals(order.getString("statut"))) { %>
+				            <form action="/DeliveryServlet" method="post">
 				                <input type="hidden" name="action" value="expedier">
 				                <input type="hidden" name="commandeId" value="<%= order.getInt("id") %>">
 				                <button type="submit" class="btn btn-warning btn-sm">Expédier</button>
 				            </form>
 				        <% } else if ("EXPEDIE".equals(order.getString("statut"))) { %>
-				            <form action="LivraisonServlet" method="post">
+				            <form action="DeliveryServlet" method="post">
 				                <input type="hidden" name="action" value="livrer">
 				                <input type="hidden" name="commandeId" value="<%=order.getInt("id") %>">
 				                <button type="submit" class="btn btn-success btn-sm">Livrer</button>

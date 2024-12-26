@@ -36,7 +36,7 @@ public class ProductService {
 
 	@GET
 	@Path("/{index}")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON + ";charset=UTF-8")
 	public Response getProduct(@PathParam("index") int index) {
 		Product product = productDAO.getProduct(index);
 		if (product != null) {
@@ -47,7 +47,7 @@ public class ProductService {
 	}
 
 	@PUT
-	@Path("/{index}")
+	@Path("/update/{index}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateProduct(@PathParam("index") int index, Product product) {
 		productDAO.updateProduct(index, product);

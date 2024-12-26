@@ -80,7 +80,7 @@
                 double totalArticle = quantite * prixUnitaire;
         %>
         <tr>
-            <td><img src="../images/<%= produitJson.getString("image") %>" class="card-img-top img-fluid"  style="height: 100px; width: auto; object-fit: contain;" >
+            <td><img src="<%= request.getContextPath() %>/images/<%= produitJson.getString("image") %>" class="card-img-top img-fluid"  style="height: 100px; width: auto; object-fit: contain;" >
             </br>
                         
                         <%=produitJson.getString("nom") %>

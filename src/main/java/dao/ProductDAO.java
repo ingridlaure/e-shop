@@ -90,18 +90,46 @@ public class ProductDAO {
 		}
 	}
 
-	public void updateProduct(int index, Product product) {
+	public boolean updateProduct(int index, Product product) {
+	    String query = "UPDATE ESHOP_PRODUIT SET nom = ?, description = ?, prix = ?, stock = ?, image = ? WHERE ID = ?";
+	    try (PreparedStatement pstm = dbConnect.prepareStatement(query)) {
+	        pstm.setString(1, product.getNom());
+	        pstm.setString(2, product.getDescription());
+	        pstm.setDouble(3, product.getPrix());
+	        pstm.setInt(4, product.getStock());
+	        pstm.setString(5, product.getImage());
+	        pstm.setInt(6, index);
 
+	        int n = pstm.executeUpdate();
+	        if (n> 0) {
+	            System.out.println("Produit mis à jour avec succès.");
+	            return true;
+	        } else {
+	            System.err.println("Échec de la mise à jour : produit introuvable.");
+	            return false;
+	        }
+	    } catch (SQLException e) {
+	        System.err.println("Erreur SQL lors de la mise à jour du produit : " + e);
+	        return false;
+	    }
 	}
-
-	public void deleteProduct(int index) {
+	
+	public boolean deleteProduct(int index) {
 		String query = "delete from ESHOP_PRODUCT where ID=?";
 		try (PreparedStatement pstm = dbConnect.prepareStatement(query)) {
 			pstm.setInt(1, index);
 			pstm.executeUpdate();
+			int i = pstm.executeUpdate();
+	        if (i> 0) {
+	            System.out.println("Produit supprimé avec succès.");
+	            return true;
+	        } else {
+	            System.err.println("Échec de la suppression : produit introuvable.");
+	            return false;
+	        }
 		} catch (SQLException e) {
 			System.err.println("erreur sql :" + e);
-
+			return false;
 		}
 
 	}

@@ -24,7 +24,7 @@ public class OrderService {
 	
 	
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON  + ";charset=UTF-8")
 	public Response getOrders() {
 		List<Order> orders = orderDAO.getOrders();
 		if (orders != null) {
@@ -36,7 +36,7 @@ public class OrderService {
 	
 	@GET
 	@Path("/user/{index}")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON + ";charset=UTF-8")
 	public Response getOrders(@PathParam("index") int index) {
 		User user = userDAO.getUser(index);
 		List<Order> orders = orderDAO.getOrdersByUser(user);
@@ -57,7 +57,7 @@ public class OrderService {
 
 	@GET
 	@Path("/{index}")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON + ";charset=UTF-8")
 	public Response getOrder(@PathParam("index") int index) {
 		Order order = orderDAO.getOrderById(index);
 		if (order != null) {
