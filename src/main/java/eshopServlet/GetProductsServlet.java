@@ -35,7 +35,7 @@ public class GetProductsServlet extends HttpServlet {
 			//récupérer les commandes 
 			 jsonResponse = HttpClientHelper.fetch("http://localhost:8081/e-shop/api/orders");
 			System.out.println(jsonResponse);
-			// Transformer le string avec objet Json
+			
 			jsonArray = new JSONArray(jsonResponse);
 			System.out.println(jsonArray);
 			getServletContext().setAttribute("orders", jsonArray);

@@ -13,7 +13,7 @@
 
     <form action="<%= request.getContextPath() %>/UpdateProductServlet" method="post" class="p-4 border rounded shadow-sm">
         <!-- Champ caché pour l'ID du produit -->
-        <input type="text" id="id" name="id" value="<%= request.getAttribute("productId") %>">
+        <input type="hidden" id="id" name="id" value="<%= request.getAttribute("productId") %>">
          <input type="hidden" name="existingImage" value="<%= request.getAttribute("productImage") %>">
 
         <div class="mb-3">

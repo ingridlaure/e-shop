@@ -41,7 +41,7 @@
         // Récupérer les informations de la commande
         int orderId = order.getInt("id");
         String statut = order.getString("statut");
-        String adresseLivraison = order.optString("adresseLivraison", "Non spécifiée");
+        String adresseLivraison = order.getString("deliveryAddress");
         double total = order.getDouble("total");
         long timestamp = order.getLong("dateCommande"); // Récupération du timestamp
 	 	Date dateCommande = new Date(timestamp);

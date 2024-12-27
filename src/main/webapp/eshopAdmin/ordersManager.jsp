@@ -28,7 +28,7 @@
             </thead>
             <tbody>
                 <%
-			//recuperer les données de ma requete
+			//recuperer les données de mon contexte
 			org.json.JSONArray orders =(org.json.JSONArray) getServletContext().getAttribute("orders");
                 System.out.println("valeur des orders :"+getServletContext().getAttribute("orders"));
 			if(orders==null){
@@ -41,6 +41,8 @@
 					long timestamp = order.getLong("dateCommande"); // Récupération du timestamp
 				 	Date dateCommande = new Date(timestamp);
 				    String formattedDate = new SimpleDateFormat("dd/MM/yyyy").format(dateCommande);
+	
+				    System.out.println("Date formatée : " + formattedDate);
 				
 					%>
                 <tr>
@@ -49,22 +51,29 @@
                     <td><%= formattedDate  %></td>
                     <td><%= order.getDouble("total")%> €</td>
                     <td>
-                        <span class="badge bg-warning"><%= order.getString("statut")%></span>
+                        <% 
+			        String statut = order.optString("statut"); // "EN COURS" comme valeur par défaut
+			        String badgeClass = "badge ";
+			        
+			        if ("LIVREE".equals(statut)) {
+			            badgeClass += "bg-success"; 
+			        } else if ("EXPEDIEE".equals(statut)) {
+			            badgeClass += "bg-primary"; 
+			        } else {
+			            badgeClass += "bg-warning"; 
+			        }
+			    %>
+    					<span class="<%= badgeClass %>"><%= statut %></span>
+
                     </td>
                     <td>
                         <a href="<%= request.getContextPath() %>/GetOrdersDetailServlet?idOrder=<%= order.getInt("id") %>"class="btn btn-primary btn-sm">Detail</a>
 				                        
 						<% if ("EN TRAITEMENT".equals(order.getString("statut"))) { %>
-				            <form action="/DeliveryServlet" method="post">
+				            <form action="<%= request.getContextPath() %>/DeliveryServlet" method="post">
 				                <input type="hidden" name="action" value="expedier">
 				                <input type="hidden" name="commandeId" value="<%= order.getInt("id") %>">
 				                <button type="submit" class="btn btn-warning btn-sm">Expédier</button>
-				            </form>
-				        <% } else if ("EXPEDIE".equals(order.getString("statut"))) { %>
-				            <form action="DeliveryServlet" method="post">
-				                <input type="hidden" name="action" value="livrer">
-				                <input type="hidden" name="commandeId" value="<%=order.getInt("id") %>">
-				                <button type="submit" class="btn btn-success btn-sm">Livrer</button>
 				            </form>
 				        <% } else if ("LIVREE".equals(order.getString("statut"))) { %>
 				            <span class="badge badge-success">Livrée</span>

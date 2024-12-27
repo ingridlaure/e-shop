@@ -49,7 +49,19 @@
                   
                    
                     <a href="#" class="btn btn-outline-success btn-sm">Voir Détails</a>
-                        <button class="btn btn-success btn-sm mt-2"><i class="bi bi-plus"></i><i class="bi bi-cart"></i></button>
+                         <form action="<%= request.getContextPath() %>/AddToCartServlet" method="post" class="mt-2">
+		                <input type="hidden" name="productId" value="<%= product.getInt("id") %>">
+		                <input type="hidden" name="productName" value="<%= product.getString("nom") %>">
+		                <input type="hidden" name="productPrice" value="<%= product.getDouble("prix") %>">
+		                <input type="hidden" name="productImage" value="<%= product.getString("image") %>">
+		                <div class="input-group">
+		                    <input type="number" name="productQuantity" value="1" min="1" class="form-control" style="max-width: 70px;">
+		                    
+		                    <button type="submit" class="btn btn-success btn-sm"><i class="bi bi-plus"></i><i class="bi bi-cart"></i> Ajouter</button>
+		                    
+		                    
+		                </div>
+		            </form>
                 </div>
             </div>
         </div>

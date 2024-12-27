@@ -55,7 +55,7 @@ public class ProductService {
 	}
 
 	@DELETE
-	@Path("/{index}")
+	@Path("/delete/{index}")
 	public Response deleteProduct(@PathParam("index") int index) {
 		productDAO.deleteProduct(index);
 		return Response.noContent().build();

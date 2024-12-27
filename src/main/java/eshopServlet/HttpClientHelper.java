@@ -29,8 +29,14 @@ public class HttpClientHelper {
             return "Aucune réponse reçue, mais la requête semble avoir été réussie.";
         }
 
-       
         return response.returnContent().asString();
     }
+	
+	 public static int sendDelete(String url) throws Exception {
+	       
+	            int responseCode = Request.Delete(url).execute().returnResponse().getStatusLine().getStatusCode();
+	            return responseCode;
+
+	 }    
 
 }

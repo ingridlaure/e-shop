@@ -16,6 +16,8 @@ import java.io.InputStream;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import dao.ProductDAO;
+
 /**
  * Servlet implementation class AddProductServlet
  */
@@ -57,9 +59,9 @@ public class AddProductServlet extends HttpServlet {
 
 			JSONObject productJson = new JSONObject(product);
 			HttpClientHelper.send("http://localhost:8081/e-shop/api/products/create", productJson.toString());
-			// Mettre à jour l'attribut du contexte
-			JSONArray productArray = (JSONArray) getServletContext().getAttribute("products");
-			productArray.put(productJson);
+			
+			ProductDAO productDAO=new ProductDAO();
+			JSONArray productArray = new JSONArray(productDAO.getProducts());
 			getServletContext().setAttribute("products", productArray);
 			response.sendRedirect(request.getContextPath() + "/eshopAdmin/productsManager.jsp");
 

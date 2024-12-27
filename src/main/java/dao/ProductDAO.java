@@ -102,29 +102,28 @@ public class ProductDAO {
 
 	        int n = pstm.executeUpdate();
 	        if (n> 0) {
-	            System.out.println("Produit mis à jour avec succès.");
+	            System.out.println("produit mis à jour avec succes");
 	            return true;
 	        } else {
-	            System.err.println("Échec de la mise à jour : produit introuvable.");
+	            System.err.println("echec de la mise à jour");
 	            return false;
 	        }
 	    } catch (SQLException e) {
-	        System.err.println("Erreur SQL lors de la mise à jour du produit : " + e);
+	        System.err.println("erreur sql: " + e);
 	        return false;
 	    }
 	}
 	
 	public boolean deleteProduct(int index) {
-		String query = "delete from ESHOP_PRODUCT where ID=?";
+		String query = "delete from ESHOP_PRODUIT where ID=?";
 		try (PreparedStatement pstm = dbConnect.prepareStatement(query)) {
 			pstm.setInt(1, index);
-			pstm.executeUpdate();
 			int i = pstm.executeUpdate();
 	        if (i> 0) {
-	            System.out.println("Produit supprimé avec succès.");
+	            System.out.println("produit supprimé avec succes");
 	            return true;
 	        } else {
-	            System.err.println("Échec de la suppression : produit introuvable.");
+	            System.err.println("echec de la suppression ");
 	            return false;
 	        }
 		} catch (SQLException e) {

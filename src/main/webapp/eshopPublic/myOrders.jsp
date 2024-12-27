@@ -35,8 +35,8 @@
                 <tr>
                     <th scope="col">Numéro de Commande</th>
                     <th scope="col">Date</th>
-                    <th scope="col">Statut</th>
                     <th scope="col">Total</th>
+                    <th scope="col">Statut</th>
                     <th scope="col">Détails</th>
                 </tr>
                 </thead>
@@ -57,8 +57,23 @@
                 <tr>
                     <td>#<%= order.getInt("id") %></td>
                     <td><%= formattedDate  %></td>
-                    <td><%= order.getString("statut")%></td>
-                    <td>€ <%= order.getDouble("total")%></td>
+    				 <td>€ <%= order.getDouble("total")%></td>
+                    <td>
+			         <% 
+			        String statut = order.optString("statut"); 
+			        String badgeClass = "badge ";
+			        
+			        if ("LIVREE".equals(statut)) {
+			            badgeClass += "bg-success"; 
+			        } else if ("EXPEDIEE".equals(statut)) {
+			            badgeClass += "bg-primary"; 
+			        } else {
+			            badgeClass += "bg-warning"; 
+			        }
+			    %>
+    					<span class="<%= badgeClass %>"><%= statut %></span>
+
+                    </td>
                     <td><a href="<%= request.getContextPath() %>/GetOrdersDetailServlet?idOrder=<%= order.getInt("id") %>"class="btn btn-primary btn-sm">Voir</a></td>
                 </tr>
                 		<%

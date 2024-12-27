@@ -210,6 +210,26 @@ public class OrderDao {
 			return false;
 		}
 	}
+
+	public boolean updateOrderStatus(int commandeId, String statut) {
+		
+		String query = "UPDATE ESHOP_COMMANDE SET statut=? WHERE ID = ?";
+	    try (PreparedStatement pstm = dbConnect.prepareStatement(query)) {
+	    	pstm.setString(1, statut);
+	        pstm.setInt(2, commandeId);
+	        int n = pstm.executeUpdate();
+	        if (n> 0) {
+	            System.out.println("commande mis à jour avec succes");
+	            return true;
+	        } else {
+	            System.err.println("echec de la mise à jour");
+	            return false;
+	        }
+	    } catch (SQLException e) {
+	        System.err.println("erreur sql: " + e);
+	        return false;
+	    }
+	}
 	
 	
 	

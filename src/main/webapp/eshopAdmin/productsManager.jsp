@@ -52,7 +52,12 @@
 				<a href="<%= request.getContextPath() %>/EditProductServlet?id=<%= product.getInt("id") %>" class="btn btn-success btn-sm">
 			        <i class="bi bi-pencil"></i>
 			    </a>
-			    <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
+			    <form action="<%= request.getContextPath() %>/DeleteProductServlet" method="post" style="display:inline;">
+			        <input type="hidden" name="id" value="<%= product.getInt("id") %>">
+			        <button type="submit" class="btn btn-danger btn-sm">
+			            <i class="bi bi-trash"></i>
+			        </button>
+		        </form>
                     </td>
                 </tr>
                 			<%

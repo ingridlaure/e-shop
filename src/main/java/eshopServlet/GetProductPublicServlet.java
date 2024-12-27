@@ -27,7 +27,10 @@ public class GetProductPublicServlet extends HttpServlet {
 			System.out.println(jsonArray);
 			// stocker les données dans la requete
 			request.setAttribute("products", jsonArray);
+		
 			getServletContext().setAttribute("products", jsonArray);
+			
+			// recupération des commandes
 			 jsonResponse = HttpClientHelper.fetch("http://localhost:8081/e-shop/api/orders");
 			 
 			 //on récup§re toutes les commandes 

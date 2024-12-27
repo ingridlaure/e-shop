@@ -32,7 +32,7 @@
                         <a class="nav-link" href="<%= request.getContextPath() %>/eshopAdmin/ordersManager.jsp">Gestion des Commandes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<%= request.getContextPath() %>/eshopAdmin/deliveriesManager.jsp">Gestion des Livraisons</a>
+                        <a class="nav-link" href="<%= request.getContextPath() %>/GetDeliveriesServlet">Gestion des Livraisons</a>
                     </li>
                      <%
                     // Récupérer l'utilisateur depuis la session
