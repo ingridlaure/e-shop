@@ -13,6 +13,7 @@ import metier.User;
 
 import java.io.IOException;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
@@ -35,6 +36,12 @@ public class CheckOutServlet extends HttpServlet {
 
 			JSONObject orderJson = new JSONObject(order);
 			HttpClientHelper.send("http://localhost:8081/e-shop/api/orders/create", orderJson.toString());
+			String jsonResponse = HttpClientHelper.fetch("http://localhost:8081/e-shop/api/orders");
+			System.out.println(jsonResponse);
+
+			JSONArray jsonArray = new JSONArray(jsonResponse);
+			System.out.println(jsonArray);
+			getServletContext().setAttribute("orders", jsonArray);
 			response.sendRedirect(request.getContextPath() + "/eshopPublic/products.jsp");
 			session.removeAttribute("cart");
 
