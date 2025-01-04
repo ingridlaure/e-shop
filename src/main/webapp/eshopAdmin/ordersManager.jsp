@@ -18,7 +18,7 @@
         <table class="table table-bordered table-striped">
             <thead class="table-dark">
                 <tr>
-                    <th>ID Commande</th>
+                    <th>Num Commande</th>
                     <th>Client</th>
                     <th>Date</th>
                     <th>Total</th>

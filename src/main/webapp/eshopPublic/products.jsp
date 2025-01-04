@@ -41,8 +41,7 @@
                     <p class="card-text" style="font-size: 1.2rem; color: #28a745;"><%= product.getDouble("prix") %> €</p>
 
                   
-                   
-                    <a href="#" class="btn btn-outline-success btn-sm">Voir Détails</a>
+                    <a href="<%= request.getContextPath() %>/GetProductDetailServlet?idProduct=<%= product.getInt("id") %>"class="btn btn-outline-success btn-sm">Voir Détails</a>
                     
                     <!-- Formulaire d'ajout au panier -->
 		            <form action="<%= request.getContextPath() %>/AddToCartServlet" method="post" class="mt-2">

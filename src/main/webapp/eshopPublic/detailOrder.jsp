@@ -34,11 +34,11 @@
 <div class="container my-5">
     <h2 class="text-center mb-4">Détails de la Commande</h2>
     <%
-        // Récupérer la commande et les articles de la requête
+        
         org.json.JSONObject order = (org.json.JSONObject) request.getAttribute("orderDetails");
         org.json.JSONArray items = order.getJSONArray("orderItems");
 
-        // Récupérer les informations de la commande
+        
         int orderId = order.getInt("id");
         String statut = order.getString("statut");
         String adresseLivraison = order.getString("deliveryAddress");
@@ -98,12 +98,12 @@
     			<% 
                     if (user != null && "USER".equals(user.getRole())) {
                 %>
-                <a href="<%= request.getContextPath() %>/eshopPublic/products.jsp" class="btn btn-primary mt-3">Continuer mes achats</a>
+                <a href="<%= request.getContextPath() %>/eshopPublic/products.jsp" class="btn btn-seondary mt-3">Continuer mes achats</a>
                     
                 <%
                     } else{
                     	%>
-                    	<a href="<%= request.getContextPath() %>/eshopAdmin/ordersManager.jsp" class="btn btn-primary mt-3">retour aux commandes</a>
+                    	<a href="<%= request.getContextPath() %>/eshopAdmin/ordersManager.jsp" class="btn btn-secondary mt-3">retour aux commandes</a>
                     	
                     	<% 
                     }

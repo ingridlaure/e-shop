@@ -16,8 +16,8 @@
         <table class="table table-bordered table-striped">
             <thead class="table-dark">
                 <tr>
-                    <th>ID Livraison</th>
-                    <th>ID Commande</th>
+                    <th>Num Livraison</th>
+                    <th>Num Commande</th>
                     <th>Adresse de Livraison</th>
                     <th>Statut</th>
                     <th>Date livraison estimee</th>

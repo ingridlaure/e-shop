@@ -46,9 +46,7 @@
                   
                     <p class="card-text" style="font-size: 1.2rem; color: #28a745;"><%= product.getDouble("prix") %> €</p>
 
-                  
-                   
-                    <a href="#" class="btn btn-outline-success btn-sm">Voir Détails</a>
+                    <a href="<%= request.getContextPath() %>/GetProductDetailServlet?idProduct=<%= product.getInt("id") %>"class="btn btn-outline-success btn-sm">Voir Détails</a>
                          <form action="<%= request.getContextPath() %>/AddToCartServlet" method="post" class="mt-2">
 		                <input type="hidden" name="productId" value="<%= product.getInt("id") %>">
 		                <input type="hidden" name="productName" value="<%= product.getString("nom") %>">
@@ -77,22 +75,22 @@
         <h4 class="text-center">Ce que disent nos clients</h4>
         <div class="row">
             <div class="col-md-4">
-                <blockquote class="blockquote">
+                
                     <p>“Un excellent service, les produits sont de grande qualité !”</p>
-                    <footer class="blockquote-footer">Marie, Mons</footer>
-                </blockquote>
+                    <footer>Marie, Mons</footer>
+                
             </div>
             <div class="col-md-4">
-                <blockquote class="blockquote">
+     
                     <p>“Livraison rapide et support client réactif. Très satisfait !”</p>
-                    <footer class="blockquote-footer">Ahmed, Brussel</footer>
-                </blockquote>
+                    <footer>Jean, Bruxelles</footer>
+             
             </div>
             <div class="col-md-4">
-                <blockquote class="blockquote">
-                    <p>“Je recommande à 100%, merci pour les réductions !”</p>
-                    <footer class="blockquote-footer">Sophia, Tournai</footer>
-                </blockquote>
+               
+                    <p>“Je recommande à 100%!”</p>
+                    <footer >Sophia, Tournai</footer>
+            
             </div>
         </div>
     </div>
@@ -100,7 +98,7 @@
  <div class="py-4">
     <div class="container text-center">
         <p>Besoin d'aide ? Contactez-nous :</p>
-        <p>Email : support@ecshop.com | Téléphone : +32 1 23 45 67 89</p>
+        <p>Email : support@eshop.com | Téléphone : +32 1 23 45 67 89</p>
         <div class="d-flex justify-content-center">
             <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
             <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>

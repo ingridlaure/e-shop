@@ -49,7 +49,10 @@
                     <td><%= product.getInt("stock") %></td>
                     <td>
                         <!-- <a class="btn btn-success" href="updateProduct.jsp" role="button"><i class="bi bi-pencil"></i></a> -->
-				<a href="<%= request.getContextPath() %>/EditProductServlet?id=<%= product.getInt("id") %>" class="btn btn-success btn-sm">
+                        <a href="<%= request.getContextPath() %>/GetProductDetailServlet?idProduct=<%= product.getInt("id") %>" class="btn btn-success btn-sm">
+                        <i class="bi bi-eye"></i>
+			    </a>
+				<a href="<%= request.getContextPath() %>/EditProductServlet?id=<%= product.getInt("id") %>" class="btn btn-primary btn-sm">
 			        <i class="bi bi-pencil"></i>
 			    </a>
 			    <form action="<%= request.getContextPath() %>/DeleteProductServlet" method="post" style="display:inline;">
