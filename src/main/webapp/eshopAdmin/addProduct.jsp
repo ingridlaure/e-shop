@@ -4,15 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Ajouter Produit - eshop</title>
 </head>
 <body>
 <jsp:include page="headerAdmin.jsp"></jsp:include>
-<!-- Contenu principal -->
+
     <div class="container my-5">
         <h1 class="text-center mb-4">Ajouter un Nouveau Produit</h1>
 
-        <!-- Formulaire d'ajout de produit -->
+       
         <form action="<%= request.getContextPath() %>/AddProductServlet" method="post" enctype="multipart/form-data" class="p-4 border rounded shadow-sm">
             <div class="mb-3">
                 <label for="productName" class="form-label">Nom du Produit</label>
@@ -26,7 +26,7 @@
 
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="productPrice" class="form-label">Prix (€)</label>
+                    <label for="productPrice" class="form-label">Prix €</label>
                     <input type="number" step="0.01" class="form-control" id="productPrice" name="price" placeholder="Prix du produit" required>
                 </div>
                 <div class="col-md-6 mb-3">

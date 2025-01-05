@@ -27,6 +27,8 @@ public class DeliveryServlet extends HttpServlet {
 		String action = request.getParameter("action");
 
 		try {
+			
+			//si l'action c'est expedier 
 			if ("expedier".equals(action)) {
 				int commandeId = Integer.parseInt(request.getParameter("commandeId"));
 				System.out.println("valeur de id : " + commandeId);
@@ -45,7 +47,7 @@ public class DeliveryServlet extends HttpServlet {
 				
 				
 				
-
+				// si l'action c'est livrer
 			} else if ("livrer".equals(action)) {
 				DeliveryDao livraisonDao = new DeliveryDao();
 				int commandeId = Integer.parseInt(request.getParameter("commandeId"));
@@ -69,7 +71,7 @@ public class DeliveryServlet extends HttpServlet {
 		/*response.sendRedirect(request.getContextPath() + "/eshopAdmin/deliveriesManager.jsp");*/
 			response.sendRedirect(request.getContextPath() + "/GetDeliveriesServlet");
 		} catch (Exception e) {
-			e.printStackTrace();
+			
 			response.getWriter().write("Erreur : " + e.getMessage());
 		}
 	}

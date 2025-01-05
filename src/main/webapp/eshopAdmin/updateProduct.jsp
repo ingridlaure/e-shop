@@ -12,7 +12,6 @@
     <h1 class="text-center mb-4">Modifier Produit</h1>
 
     <form action="<%= request.getContextPath() %>/UpdateProductServlet" method="post" class="p-4 border rounded shadow-sm">
-        <!-- Champ caché pour l'ID du produit -->
         <input type="hidden" id="id" name="id" value="<%= request.getAttribute("productId") %>">
          <input type="hidden" name="existingImage" value="<%= request.getAttribute("productImage") %>">
 

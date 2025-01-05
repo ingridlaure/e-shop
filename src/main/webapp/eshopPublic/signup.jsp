@@ -4,14 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Inscription - eshop</title>
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
 	<div class="d-flex justify-content-center align-items-center vh-50">
         <div class="card p-4 shadow" style="width: 100%; max-width: 400px;">
             <h3 class="text-center mb-4">Créer un Compte</h3>
-            <!-- Formulaire d'inscription -->
             <form action="<%= request.getContextPath() %>/AddUserServlet"  method="post">
                
                 <div class="mb-3">

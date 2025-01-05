@@ -25,6 +25,7 @@ public class DeliveryDao {
         }
     }
     
+    //récuperer toutes les livraison
     public List<Delivery> getDeliveries(){
     		OrderDao orderDAO= new OrderDao();
     		String query="SELECT * from ESHOP_LIVRAISON order by id desc"; 
@@ -51,6 +52,7 @@ public class DeliveryDao {
     		return deliveries;
     }
 
+    //ajouter une livraison
     public boolean addLivraison(Delivery delivery) {
     	System.out.println("Dans la requette pour ajouter une livrasion");
         String query = "INSERT INTO ESHOP_LIVRAISON (commande_id,date_livraison_estimee,statut,adresse_livraison) VALUES (?,?,?,?)";
@@ -76,7 +78,7 @@ public class DeliveryDao {
 			return false;
 		}
 }
-    
+    // modifier une livraiqon
     public boolean updateLivraisonStatus(int livraisonId, String newStatus) {
         String query = "UPDATE ESHOP_LIVRAISON SET statut = ?, date_livraison_reelle = ? WHERE id = ?";
         try (PreparedStatement pstmt = dbConnect.prepareStatement(query)) {

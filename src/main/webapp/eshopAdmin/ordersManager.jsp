@@ -6,15 +6,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Gestion commande - eshop</title>
 </head>
 <body>
 <jsp:include page="headerAdmin.jsp"></jsp:include>
-<!-- Contenu principal -->
+
     <div class="container my-5">
         <h1 class="text-center mb-4">Gestion des Commandes</h1>
 
-        <!-- Table des commandes -->
+       
         <table class="table table-bordered table-striped">
             <thead class="table-dark">
                 <tr>

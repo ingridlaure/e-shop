@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>mon panier -eshop</title>
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
@@ -79,7 +79,7 @@
                 </tfoot>
             </table>
         </div>
-        <!-- Boutons -->
+       
         <div class="d-flex justify-content-between">
             <a href="<%= request.getContextPath() %>/eshopPublic/products.jsp" class="btn btn-secondary">Continuer vos achats</a>
              <% 

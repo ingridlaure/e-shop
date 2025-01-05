@@ -26,6 +26,7 @@ public class OrderDao {
 		}
 	}
 	
+	//recuperer toutes les commaandes
 	public List<Order> getOrders() {
 		String query="SELECT * from ESHOP_COMMANDE order by id desc"; 
 		List<Order> orders=new ArrayList<>();
@@ -52,6 +53,7 @@ public class OrderDao {
 		
 	}
 	
+	//recuperer les commandes d'un utilisateur
 	public List<Order> getOrdersByUser(User user) {
 		String query="SELECT * from ESHOP_COMMANDE WHERE utilisateur_id =? order by id desc"; 
 		List<Order> orders=new ArrayList<>();
@@ -77,6 +79,8 @@ public class OrderDao {
 		
 		
 	}
+	
+	//recuperer une commande avec son id
 	public Order getOrderById(int index) {
 		Order order=null;
 		String query = "select * from ESHOP_COMMANDE where ID=?";
@@ -102,6 +106,8 @@ public class OrderDao {
 		return order;
 
 	}
+	
+	//recuperer les lignes de commande
 	public void getOrderItems(Order order) {
 		String query="SELECT * FROM ESHOP_COMMANDE_ITEM where commande_id=?";
 		try(PreparedStatement ps=dbConnect.prepareStatement(query)){
@@ -124,7 +130,7 @@ public class OrderDao {
 		
 	}
 	
-
+//ajouter une commande
 	public Boolean addOrder(Order order) {
 		int orderId = 0;
 		// Ajouter la commande à la base de données
@@ -177,7 +183,7 @@ public class OrderDao {
 					System.out.println("erreur :" + e);
 				}
 
-				// on insere la ligne de commande n
+				// on insere la ligne de commande 
 				try (PreparedStatement ps5 = dbConnect.prepareStatement(query5)) {
 					System.out.println(" try de inser commande item ");
 					ps5.setInt(1, orderId);
@@ -190,7 +196,7 @@ public class OrderDao {
 					System.out.println("erreur :" + e);
 				}
 
-				// on update le stock du produit inserer
+				// on update le stock du produit inseré
 
 				try (PreparedStatement ps6 = dbConnect.prepareStatement(query6)) {
 					System.out.println(" try de inser update stock ");
@@ -211,6 +217,7 @@ public class OrderDao {
 		}
 	}
 
+	//modifier le statut d'une commande
 	public boolean updateOrderStatus(int commandeId, String statut) {
 		
 		String query = "UPDATE ESHOP_COMMANDE SET statut=? WHERE ID = ?";

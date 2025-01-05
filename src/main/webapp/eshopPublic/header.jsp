@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Accueil - eCommerce</title>
+    <title>Accueil e-shop</title>
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
@@ -35,7 +35,7 @@
                 <a class="nav-link fw-bold" href="<%= request.getContextPath() %>/getOrdersByUserServlet">commandes</a>
             </li>
             <%
-                    // Récupérer l'utilisateur depuis la session
+                   
                     HttpSession sess = request.getSession(false);
                     User user = (sess!= null) ? (User) sess.getAttribute("user") : null;
 

@@ -20,9 +20,7 @@ import java.io.IOException;
 @WebFilter("/eshopPublic/recapOrder.jsp")
 public class CheckOutFilter extends HttpFilter implements Filter {
      
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {

@@ -118,7 +118,7 @@ public class CartDao {
         				System.out.println("erreur :" + e);
         			}
                 } else {
-                    // Ajouter un nouvel article au panier
+                    
                     String query5 = "INSERT INTO ESHOP_PANIER_ITEM (panier_id, produit_id, quantite, priX) VALUES (?, ?, ?, ?)";
                     try( PreparedStatement ps5 = dbConnect.prepareStatement(query5)){
                     ps5.setInt(1, cartId);

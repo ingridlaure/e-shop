@@ -4,20 +4,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Gestion des produits - eshop</title>
 </head>
 <body>
 <jsp:include page="headerAdmin.jsp"></jsp:include>
- <!-- Contenu principal -->
+
     <div class="container my-5">
         <h1 class="text-center mb-4">Gestion des Produits</h1>
 
-        <!-- Bouton pour ajouter un produit -->
         <div class="d-flex justify-content-end mb-3">
            <a class="btn btn-success" href="<%= request.getContextPath() %>/eshopAdmin/addProduct.jsp" role="button"><i class="bi bi-plus"></i>Ajouter un produit</a>
         </div>
 
-        <!-- Table des produits -->
+       >
         <table class="table table-bordered table-striped">
             <thead class="table-dark">
                 <tr>
@@ -37,9 +36,8 @@
 				out.println("<li>Aucun Produit trouvé</li>");
 			}else{
 				for(int i=0;i<products.length();i++){
-					//Recuperer le personnage 
 					org.json.JSONObject product =products.getJSONObject(i);
-					//out.println("<li><a href=DetailProduitServlet?idProduit="+product.getInt("id")+">"+film.getString("titre")+"</a></li>");
+
 					%>
                
                 <tr>
@@ -47,8 +45,7 @@
                     <td><%= product.getString("description") %></td>
                     <td><%= product.getDouble("prix") %></td>
                     <td><%= product.getInt("stock") %></td>
-                    <td>
-                        <!-- <a class="btn btn-success" href="updateProduct.jsp" role="button"><i class="bi bi-pencil"></i></a> -->
+                    <td> 
                         <a href="<%= request.getContextPath() %>/GetProductDetailServlet?idProduct=<%= product.getInt("id") %>" class="btn btn-success btn-sm">
                         <i class="bi bi-eye"></i>
 			    </a>
@@ -67,7 +64,6 @@
 				}
 			}
 			%>
-                <!-- Produits dynamiques ici -->
             </tbody>
         </table>
     </div>

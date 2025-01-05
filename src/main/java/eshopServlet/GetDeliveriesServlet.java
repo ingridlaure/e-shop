@@ -20,7 +20,6 @@ public class GetDeliveriesServlet extends HttpServlet {
 		 String jsonResponse = HttpClientHelper.fetch("http://localhost:8081/e-shop/api/deliveries");
 		 //on récup§re toutes les livraisons
 			System.out.println(jsonResponse);
-			// Transformer le string avec objet Json
 			JSONArray jsonArray = new JSONArray(jsonResponse);
 			System.out.println(" json array des livraisons"+jsonArray);
 			getServletContext().setAttribute("deliveries", jsonArray);

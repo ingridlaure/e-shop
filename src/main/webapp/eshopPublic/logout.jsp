@@ -11,7 +11,7 @@
  if (session != null) {
         session.invalidate();
     }
-    // Rediriger vers la page d'accueil
+   
     response.sendRedirect(request.getContextPath() + "/index.jsp");
     %>
 </body>

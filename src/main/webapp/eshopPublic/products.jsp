@@ -43,7 +43,7 @@
                   
                     <a href="<%= request.getContextPath() %>/GetProductDetailServlet?idProduct=<%= product.getInt("id") %>"class="btn btn-outline-success btn-sm">Voir Détails</a>
                     
-                    <!-- Formulaire d'ajout au panier -->
+                    <!-- formulaire pour ajouter au panier-->
 		            <form action="<%= request.getContextPath() %>/AddToCartServlet" method="post" class="mt-2">
 		                <input type="hidden" name="productId" value="<%= product.getInt("id") %>">
 		                <input type="hidden" name="productName" value="<%= product.getString("nom") %>">
@@ -53,7 +53,7 @@
 		                    <input type="number" name="productQuantity" value="1" min="1" class="form-control" style="max-width: 70px;">
 		                    
 		                    <button type="submit" class="btn btn-success btn-sm"><i class="bi bi-plus"></i><i class="bi bi-cart"></i> Ajouter</button>
-		                    
+
 		                    
 		                </div>
 		            </form>

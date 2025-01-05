@@ -50,8 +50,7 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.module</groupId>
 			<artifactId>jackson-module-jaxb-annotations</artifactId>
-			<version>2.15.2</version> <!-- Remplacez par une version compatible
-			avec votre projet -->
+			<version>2.15.2</version> 
 		</dependency>
 		<dependency>
     		<groupId>com.oracle.database.jdbc</groupId>

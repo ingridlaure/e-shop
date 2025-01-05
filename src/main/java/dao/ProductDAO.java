@@ -22,6 +22,7 @@ public class ProductDAO {
 		}
 	}
 
+	//recupérer la liste des produits
 	public List<Product> getProducts() {
 		List<Product> products = new ArrayList<>();
 		String query = "select * from ESHOP_PRODUIT";
@@ -45,6 +46,7 @@ public class ProductDAO {
 		return products;
 	}
 
+	//ajouter un produit
 	public Boolean addProduct(Product product) {
 		String query = "insert into ESHOP_PRODUIT (nom,description,prix,stock,image) VALUES(?,?,?,?,?)";
 		try (PreparedStatement pstm1 = dbConnect.prepareStatement(query)) {
@@ -67,6 +69,7 @@ public class ProductDAO {
 		}
 	}
 
+	//recuperer un produit par son index
 	public Product getProduct(int index) {
 		Product product = new Product();
 		String query = "select * from ESHOP_PRODUIT where ID=?";
@@ -90,6 +93,7 @@ public class ProductDAO {
 		}
 	}
 
+	//modifier un produit 
 	public boolean updateProduct(int index, Product product) {
 	    String query = "UPDATE ESHOP_PRODUIT SET nom = ?, description = ?, prix = ?, stock = ?, image = ? WHERE ID = ?";
 	    try (PreparedStatement pstm = dbConnect.prepareStatement(query)) {
@@ -114,6 +118,7 @@ public class ProductDAO {
 	    }
 	}
 	
+	//supprimer un produit 
 	public boolean deleteProduct(int index) {
 		String query = "delete from ESHOP_PRODUIT where ID=?";
 		try (PreparedStatement pstm = dbConnect.prepareStatement(query)) {

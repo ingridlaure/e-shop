@@ -7,6 +7,7 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.client.fluent.Request;
 
 public class HttpClientHelper {
+	
 	// Méthodes fetch les données (req;get) et qui repond sous forme de string
 	public static String fetch(String url) throws IOException {
 		// Requete get avec l'api httpcomponents Fluent
@@ -15,13 +16,13 @@ public class HttpClientHelper {
 		return response.returnContent().asString();
 	}
 
-	// envoie de sdonnées
+	// envoie de données
 	public static String send(String url, String body) throws IOException {
 		Response response = Request.Post(url).bodyString(body, ContentType.APPLICATION_JSON).execute();
 		return response.returnContent().asString();
 	}
 	
-	
+	//Modificaation des données
 	public static String put(String url, String body) throws IOException {
        
 		Response response = Request.Put(url).bodyString(body, ContentType.APPLICATION_JSON).execute();
@@ -32,6 +33,7 @@ public class HttpClientHelper {
         return response.returnContent().asString();
     }
 	
+	//supprimer les données
 	 public static int sendDelete(String url) throws Exception {
 	       
 	            int responseCode = Request.Delete(url).execute().returnResponse().getStatusLine().getStatusCode();

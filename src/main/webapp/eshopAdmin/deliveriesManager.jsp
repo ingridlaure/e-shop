@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Gestion livraison - eshop</title>
 </head>
 <body>
 <jsp:include page="headerAdmin.jsp"></jsp:include>

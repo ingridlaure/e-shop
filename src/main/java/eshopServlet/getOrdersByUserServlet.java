@@ -31,13 +31,10 @@ public class getOrdersByUserServlet extends HttpServlet {
 			
 			String jsonResponse = HttpClientHelper.fetch("http://localhost:8081/e-shop/api/orders/user/"+id);
 			System.out.println(jsonResponse);
-			// Transformer le string avec objet Json
 			JSONArray jsonArray = new JSONArray(jsonResponse);
 			System.out.println(jsonArray);
-			// stocker les données dans la requete
 			request.setAttribute("ordersUser", jsonArray);
-			
-			// forward à la jsp
+		
 			request.getRequestDispatcher("/eshopPublic/myOrders.jsp").forward(request, response);
 		} catch (Exception e) {
 			response.getWriter().write("Erreur : " + e.getMessage());

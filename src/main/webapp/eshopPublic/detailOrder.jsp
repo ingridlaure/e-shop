@@ -8,12 +8,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Detail commmande</title>
 </head>
 <body>
 			<% 
 
- // Récupérer l'utilisateur depuis la session
+
                     HttpSession sess = request.getSession(false);
                     User user = (sess!= null) ? (User) sess.getAttribute("user") : null;
 

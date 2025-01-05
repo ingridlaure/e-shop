@@ -25,7 +25,7 @@
                         session.removeAttribute("errorMessage");
                             }
                         %>
-            <!-- Formulaire de connexion -->
+           
             <form action="<%= request.getContextPath() %>/VerifLoginServlet"  method="post">
                 <div class="mb-3">
                     <label for="username" class="form-label">Nom d'utilisateur</label>

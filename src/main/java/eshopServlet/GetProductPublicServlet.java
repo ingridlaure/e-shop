@@ -19,7 +19,7 @@ public class GetProductPublicServlet extends HttpServlet {
 		response.setContentType("application/json; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		try {
-			// Appel à l'API Film_URL => recevoir une reponse
+			// Appel à l'API  => recevoir une reponse
 			String jsonResponse = HttpClientHelper.fetch("http://localhost:8081/e-shop/api/products");
 			System.out.println(jsonResponse);
 			// Transformer le string avec objet Json

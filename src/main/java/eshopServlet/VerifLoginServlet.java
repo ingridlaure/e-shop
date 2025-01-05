@@ -23,15 +23,15 @@ public class VerifLoginServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		UserDao userDAO = new UserDao();
-		// Valider les informations utilisateur
+		// verifier les informations utilisateur
 		User user = userDAO.verifUser(username, password);
 
 		if (user != null) {
-			// Créer une session pour l'utilisateur
+			// creer une session pour l'utilisateur
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
 			
-			// Rediriger en fonction du rôle
+			// rediriger en fonction du role
 			if ("ADMIN".equals(user.getRole())) {
 				response.sendRedirect(request.getContextPath() + "/eshopAdmin/homeAdmin.jsp");
 			} else {
@@ -42,8 +42,8 @@ public class VerifLoginServlet extends HttpServlet {
 		} 
 		
 		else {
-			// Rediriger vers la page de connexion avec un message d'erreur
-			request.setAttribute("errorMessage", "Identifiants invalides !");
+			// rediriger vers la page de connexion avec un message d'erreur
+			request.setAttribute("errorMessage", "identifiants invalides!");
 			System.out.println(request.getContextPath() + "/eshopPublic/login.jsp");
 			request.getRequestDispatcher("/eshopPublic/login.jsp").forward(request, response);
 

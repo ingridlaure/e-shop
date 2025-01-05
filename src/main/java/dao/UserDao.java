@@ -23,6 +23,7 @@ public class UserDao {
 		}
 	}
 
+	//ajouter un utilisateur
 	public Boolean addUser(User user) {
 		String query1 = "select * from ESHOP_UTILISATEUR where email=?";
 		try (PreparedStatement pstm = dbConnect.prepareStatement(query1)) {
@@ -61,6 +62,8 @@ public class UserDao {
 		}
 
 	}
+	
+	//récuperer un utilisateur
 
 	public User getUser(int index) {
 		User user = new User();
@@ -86,6 +89,7 @@ public class UserDao {
 		}
 	}
 
+	//verifier la connexion
 	public User verifUser(String email, String password) {
 		User user = new User();
 		String query = "select * from ESHOP_UTILISATEUR where email=?";
@@ -95,6 +99,8 @@ public class UserDao {
 			if (rs.next()) {
 				String hashedPassword = rs.getString("password");
 				BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+				
+				if (passwordEncoder.matches(password, hashedPassword)) {
 				int id = rs.getInt(1);
 				String role = rs.getString(4);
 				String nom = rs.getString(5);
@@ -103,6 +109,10 @@ public class UserDao {
 				user = new User(id, email, password, role, nom, prenom, adresse);
 				System.out.println(user);
 				return user;
+				}
+				else {
+					return null;
+				}
 			} else {
 				return null;
 			}
